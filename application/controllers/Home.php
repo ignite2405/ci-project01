@@ -20,7 +20,15 @@ class Home extends CI_Controller {
 
     public function do_register()
     {
-        echo "masuk ke function ini";
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
+
+        if ($this->form_validation->run() == false) {
+            $this->session->set_flashdata('errors', validation_errors());
+            redirect('/home/register','refresh');
+        } else {
+            # code...
+        }
     }
 
 }
