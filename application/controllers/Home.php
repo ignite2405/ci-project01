@@ -27,7 +27,18 @@ class Home extends CI_Controller {
             $this->session->set_flashdata('errors', validation_errors());
             redirect('/home/register','refresh');
         } else {
-            # code...
+            $username=$this->input->post('username');
+            $password=$this->input->post('password');
+
+            $data = array(
+            	'username' => $username,
+            	'password' => $password
+            );
+
+            $this->db->insert('users', $data);
+
+            $this->session->set_flashdata('success', 'berhasil save data');
+            redirect('home/register', 'refresh');
         }
     }
 

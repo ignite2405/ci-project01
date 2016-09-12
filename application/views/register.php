@@ -5,12 +5,17 @@
 </head>
 <body>
 	
-	<!-- <form action="<?php echo base_url(); ?>home/do_register" method="post"> -->
+	
 
 	<?php if ($this->session->flashdata('errors')): ?>
 		<p><?php echo $this->session->flashdata('errors'); ?></p>
 	<?php endif; ?>
 
+	<?php if ($this->session->flashdata('success')): ?>
+		<p><?php echo $this->session->flashdata('success'); ?></p>
+	<?php endif; ?>
+
+	<!-- <form action="<?php echo base_url(); ?>home/do_register" method="post"> -->
 	<?php echo form_open(base_url().'home/do_register'); ?>
 		<table>
 			<tr>
