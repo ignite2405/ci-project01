@@ -13,6 +13,16 @@ class Home extends CI_Controller {
 		echo "lalalala";
 	}
 
+    public function register()
+    {
+        $this->load->view('register');
+    }
+
+    public function do_register()
+    {
+        echo "masuk ke function ini";
+    }
+
 }
 
 /* End of file Home.php */
