@@ -35,7 +35,12 @@ class Home extends CI_Controller {
             	'password' => $password
             );
 
-            $this->db->insert('users', $data);
+            $this->db->trans_begin();
+
+            $this->load->model('homes');
+            $this->homes->insert_new_username($data);
+
+            $this->db->trans_commit();
 
             $this->session->set_flashdata('success', 'berhasil save data');
             redirect('home/register', 'refresh');
