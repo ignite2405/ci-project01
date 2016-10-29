@@ -10,6 +10,16 @@ class Homes extends CI_Model {
         $this->db->insert('users', $data);
     }
 
+    public function pulldata($username, $password)
+    {
+    	// $this->db->select("username, password");
+    	// select username,password from users
+        $this->db->where('username', $username);
+        $this->db->where('password', $password);
+        $query = $this->db->get('users');
+    	return $query->result()[0];
+    }
+
 }
 
 /* End of file Homes.php */

@@ -5,13 +5,15 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		echo "this is index";
+		$data['main_view']="register";
+
+        $this->load->view('layouts/main', $data);
 	}
 
-	public function alvin()
+	/*public function alvin()
 	{
 		echo "lalalala";
-	}
+	}*/
 
     public function register()
     {
@@ -45,6 +47,38 @@ class Home extends CI_Controller {
             $this->session->set_flashdata('success', 'berhasil save data');
             redirect('home/register', 'refresh');
         }
+    }
+
+    public function viewLogin()
+    {
+        $this->load->view('users/login');
+    }
+
+    public function do_login()
+    {
+
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+
+        // $sql = "SELECT * FROM users";
+        // $results = $this->db->query($sql)->result();
+
+        // foreach ($results as $result) {
+        //     if ($result->username == $username && $result->password == $password) {
+        //         echo "data valid";
+        //         break;
+        //     } else {
+        //         echo "data tidak valid";
+        //     }
+        // }
+
+        $sql = "SELECT * FROM users where username = ? and password = ?";
+        // $sql = "SELECT * from users where username = ".$username." and";
+        $results = $this->db->query($sql, array($username, $password))->result();
+
+        if (count($results) > 0) var_dump($results);
+
+
     }
 
 }

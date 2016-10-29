@@ -2,10 +2,13 @@
 <html>
 <head>
 	<title>Register</title>
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
+	<script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
 </head>
 <body>
 	
-	
+	<h1>Register</h1>
 
 	<?php if ($this->session->flashdata('errors')): ?>
 		<p><?php echo $this->session->flashdata('errors'); ?></p>
@@ -43,6 +46,8 @@
 				</td>
 
 			</tr>
+			
+			
 		</table>
 	<?php echo form_close(); ?>
 	<!-- </form> -->
